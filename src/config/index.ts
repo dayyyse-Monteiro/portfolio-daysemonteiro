@@ -70,7 +70,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "Análise técnica do impacto econômico do 13º salário na economia maranhense, destacando os setores mais beneficiados".,
       linkPreview: "/Nota-tecnica-do-13-salario.pdf",
       linkSource: "https://github.com/dayyyse-Monteiro/portfolio-daysemonteiro",
-      image: "/shopify-clon.png",
+      image: "/13salario.png",
     },
     {
       name: "Caracterização Socioeconômica da Região do Conlagos",
