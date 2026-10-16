@@ -1,11 +1,11 @@
 import type { SiteConfig, SiteContent } from "../types";
 
 export const SITE_CONFIG: SiteConfig = {
-  title: "Alejandro Múnez — Mobile & Web Developer",
-  author: "Alejandro Múnez Cuntez",
+  title: "Dayse Monteiro — Economia e Negócios",
+  author: "Dayse Abreu da Silva Monteiro",
   description:
-    "Software Engineer based in San Francisco, USA. I specialize in UI design, web and mobile application development and maintenance.",
-  lang: "en",
+    "Estudante de Economia na Universidade Federal do Maranhão, especializando-se em UX e UI Design e gestão de negócios.",
+  lang: "pt-BR",
   siteLogo: "/alejandro-small.jpg",
   navLinks: [
     { text: "Experience", href: "#experience" },
