@@ -59,10 +59,10 @@ export const SITE_CONTENT: SiteContent = {
                 "Desenvolvimento de competências em análise de dados, estatística, IA e uso de ferramentas tecnológicas para resolução de problemas reais, com foco em inovação e empreendedorismo." ]
     },  projects: [
     {
-      name: "Spotifu Music",
-      summary: "A music streaming app that emulates Spotify's core features.",
-      linkPreview: "/",
-      linkSource: "https://github.com/immois/astro-zen",
+      name: "Temporizador em Etapas",
+      summary: "Apresentação em formato de pitch detalhando o projeto Temporizador em Etapas, com foco em fluxo de usuário e design de interface.",
+      linkPreview: "/Temporizador em Etapas Pitch (4).pdf",
+      linkSource: "https://github.com/dayyyse-Monteiro/portfolio-daysemonteiro",
       image: "/spotifu.png",
     },
     {
