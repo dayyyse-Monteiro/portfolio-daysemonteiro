@@ -77,7 +77,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "O presente relatório foi elaborado pelo Instituto Maranhense de Estudos Socioeconômicos e Cartográficos (IMESC) para o Consórcio Intermunicipal de Desenvolvimento Regional dos Lagos Maranhenses (CONLAGOS) com o objetivo de caracterizar os 26 municípios que compõem o consórcio.",
       linkPreview: "/Caracterizacao-Socioeconomica-da-Regiao-do-Conlagos.pdf",
       linkSource: "https://github.com/dayyyse-Monteiro/portfolio-daysemonteiro",
-      image: "/clone-ig.png",
+      image: "/conlagos.png",
     },
   ],
   about: {
