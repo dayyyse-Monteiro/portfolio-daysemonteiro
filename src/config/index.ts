@@ -57,7 +57,7 @@ export const SITE_CONTENT: SiteContent = {
       endDate: "Jul 2025",
       summary: ["Capacitação & Aplicação em Ciência de Dados: Participação em programa intensivo de capacitação promovido pela Secretaria da Ciência, Tecnologia e Inovação do Maranhão (SECTI) e pela FAPEMA, abrangendo 20 cursos em Ciência de Dados, 12 em desenvolvimento de carreira e 5 em Inteligência Artificial.",
                 "Desenvolvimento de competências em análise de dados, estatística, IA e uso de ferramentas tecnológicas para resolução de problemas reais, com foco em inovação e empreendedorismo." ]
-    },  projects: [
+,    },  projects: [
     {
       name: "Temporizador em Etapas",
       summary: "Apresentação em formato de pitch detalhando o projeto Temporizador em Etapas, com foco em fluxo de usuário e design de interface.",
