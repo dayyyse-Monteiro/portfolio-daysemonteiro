@@ -63,7 +63,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "Apresentação em formato de pitch detalhando o projeto Temporizador em Etapas, com foco em fluxo de usuário e design de interface.",
       linkPreview: "/Temporizador em Etapas Pitch (4).pdf",
       linkSource: "https://github.com/dayyyse-Monteiro/portfolio-daysemonteiro",
-      image: "/spotifu.png",
+      image: "/temporizadorcapa.jpg",
     },
     {
       name: "Shopp App",
