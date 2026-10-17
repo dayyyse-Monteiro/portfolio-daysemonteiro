@@ -1,8 +1,7 @@
 ---
 import Header from "@components/Header.astro";
-import { Font } from "astro:assets";
-import { SITE_CONFIG } from "@config";
 import Footer from "@components/Footer.astro";
+import { SITE_CONFIG } from "@config";
 
 const {
   title,
@@ -16,39 +15,68 @@ const {
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = SITE_CONFIG;
 
-const ogImgUrl = canonicalURL + socialImage;
+const ogImgUrl = new URL(socialImage, canonicalURL).toString();
 ---
 
 <!doctype html>
-<html lang={lang} class="scroll-pt-16 scroll-smooth">
+<html lang={lang} class="scroll-pt-16 scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={author} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href={siteLogo} />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
 
-    <Font cssVariable="--font-gabarito" preload />
-    <Font cssVariable="--font-be-vietnam-pro" preload />
-
+    <!-- Open Graph / Redes Sociais -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImgUrl} />
 
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImgUrl} />
+
+    <!-- Google Fonts pré-carregamento para alta performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Gabarito:wght@400;600;700&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-black font-sans">
+  <body class="bg-black font-sans text-neutral-200 antialiased selection:bg-primary/30 selection:text-white">
     <Header siteLogo={siteLogo} navLinks={navLinks} />
-    <main class="mx-auto max-w-3xl px-5">
+    <main class="mx-auto max-w-3xl px-5 pb-24">
       <slot />
     </main>
     <Footer author={author} socialLinks={socialLinks} />
   </body>
 </html>
+
+<style is:global>
+  /* Suporte global a fontes e estética sênior */
+  :root {
+    --font-gabarito: 'Gabarito', sans-serif;
+    --font-be-vietnam-pro: 'Be Vietnam Pro', sans-serif;
+  }
+  
+  html {
+    color-scheme: dark;
+  }
+  
+  /* Melhora na suavidade de rolagem e renderização de fontes */
+  body {
+    font-family: var(--font-be-vietnam-pro), sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-gabarito), sans-serif;
+  }
+</style>
