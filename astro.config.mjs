@@ -5,6 +5,9 @@ import { fontProviders } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
+  // Opcional: Adicione a URL do seu site quando fizer o deploy final na Vercel
+  // site: "https://seu-portfolio.vercel.app",
+
   fonts: [
     {
       provider: fontProviders.fontsource(),
