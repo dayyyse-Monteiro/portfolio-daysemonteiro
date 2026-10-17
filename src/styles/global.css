@@ -4,7 +4,8 @@
   --font-sans: var(--font-be-vietnam-pro);
   --font-serif: var(--font-gabarito);
 
-  --color-primary: #2563eb;
+  /* Tom roxo/lilás profissional para destacar o portfólio de UX/UI e Economia */
+  --color-primary: #8b5cf6;
   --color-neutral: #94a3b8;
   --color-white: #e2e8f0;
   --color-black: #0e141b;
