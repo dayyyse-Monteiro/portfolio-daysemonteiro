@@ -1,6 +1,5 @@
 ---
 import Menu from "@icons/Menu.astro";
-import { Image } from "astro:assets";
 import type { HeaderProps } from "@types";
 
 type Props = HeaderProps;
@@ -11,14 +10,12 @@ const { siteLogo, navLinks } = Astro.props;
 <header
   class="sticky top-0 z-50 mx-auto flex max-w-5xl animate-slide-in justify-between bg-black px-5 py-6"
 >
-  <a href="/" aria-label="Home link">
-    <Image
-      class="rounded-full"
+  <a href="/" aria-label="Início">
+    <img
+      class="h-[45px] w-[45px] rounded-full object-cover"
       src={siteLogo}
-      width="45"
-      height="45"
-      alt="website logo"
-      priority
+      alt="Logo Dayse Monteiro"
+      loading="eager"
     />
   </a>
 
@@ -28,6 +25,7 @@ const { siteLogo, navLinks } = Astro.props;
     class="px-1.5 text-neutral sm:hidden"
     aria-expanded="false"
     aria-controls="main-menu"
+    aria-label="Abrir menu"
   >
     <Menu />
   </button>
@@ -38,8 +36,8 @@ const { siteLogo, navLinks } = Astro.props;
   >
     <ul class="gap-2 sm:flex">
       {
-        navLinks.map((link) => (
-          <li class="relative">
+        navLinks.map((link, index) => (
+          <li key={index} class="relative">
             <a
               class={`nav-item relative block p-2 text-sm font-medium transition-all duration-500 after:absolute after:bottom-0 after:left-2/4 after:h-2 after:w-1 after:-translate-x-2/4 after:text-primary after:opacity-0 after:content-['•'] hover:text-white`}
               href={link.href}
@@ -54,7 +52,7 @@ const { siteLogo, navLinks } = Astro.props;
 </header>
 
 <script>
-  // Toggle mobile menu
+  // Alternar menu mobile
   const button = document.querySelector("#menu-button");
   const menu = document.querySelector("#main-menu");
   const navItems = document.querySelectorAll("#main-menu > ul > li > a");
@@ -70,7 +68,7 @@ const { siteLogo, navLinks } = Astro.props;
     item?.addEventListener("click", toggleMenu);
   });
 
-  // Update navigation based on scroll position with Intersection Observer
+  // Atualizar a navegação com base na rolagem da página
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -92,7 +90,7 @@ const { siteLogo, navLinks } = Astro.props;
     observer.observe(section);
   });
 
-  // Cleanup observer
+  // Limpeza do observador ao mudar de aba/visibilidade
   document.onvisibilitychange = () => {
     if (document.visibilityState === "hidden") {
       observer.disconnect();
