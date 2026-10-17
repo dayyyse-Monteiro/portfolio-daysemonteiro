@@ -1,3 +1,8 @@
+export interface HeaderProps {
+  siteLogo: string;
+  navLinks: { text: string; href: string }[];
+}
+
 export interface SiteConfig extends HeaderProps {
   title: string;
   description: string;
@@ -41,9 +46,4 @@ export interface ProjectProps {
 export interface AboutProps {
   description: string;
   image: string;
-}
-
-export interface HeaderProps {
-  siteLogo: string;
-  navLinks: { text: string; href: string }[];
 }
