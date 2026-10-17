@@ -5,7 +5,7 @@ type Props = HeroProps;
 const { name, specialty, summary, email } = Astro.props;
 ---
 
-<section class="py-24 md:py-32" id="#hero">
+<section class="py-24 md:py-32" id="hero">
   <h1
     class="mb-1.5 font-serif text-7xl font-bold tracking-tightest text-white sm:text-8xl md:mb-0 md:text-9xl"
   >
@@ -21,7 +21,9 @@ const { name, specialty, summary, email } = Astro.props;
   </p>
 
   <a
-    class="inline-block rounded-full bg-primary px-8 py-5 text-sm leading-5 font-medium text-[#fff]"
-    href={`mailto:${email}`}>Get in Touch</a
+    class="inline-block rounded-full bg-primary px-8 py-5 text-sm leading-5 font-medium text-[#fff] transition-opacity hover:opacity-90"
+    href={`mailto:${email}`}
   >
+    Entre em contato
+  </a>
 </section>
