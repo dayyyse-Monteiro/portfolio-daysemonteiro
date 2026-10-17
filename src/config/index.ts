@@ -8,7 +8,7 @@ export const SITE_CONFIG: SiteConfig = {
   lang: "pt-BR",
   siteLogo: "/Daysemonteiro.pnj.jpeg",
   navLinks: [
-    { text: "Experiências", href: "#experiências" },
+    { text: "Experiências", href: "#experiencias" },
     { text: "Projetos", href: "#projetos" },
     { text: "Sobre", href: "#sobre" },
   ],
