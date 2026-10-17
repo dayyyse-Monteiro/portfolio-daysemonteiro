@@ -1,3 +1,4 @@
+
 ---
 import Menu from "@icons/Menu.astro";
 import type { HeaderProps } from "@types";
@@ -8,9 +9,9 @@ const { siteLogo, navLinks } = Astro.props;
 ---
 
 <header
-  class="sticky top-0 z-50 mx-auto flex max-w-5xl animate-slide-in justify-between bg-black px-5 py-6"
+  class="sticky top-0 z-50 mx-auto flex max-w-5xl justify-between bg-black px-5 py-6"
 >
-  <a href="/" aria-label="Início">
+  <a href="/" aria-label="Ir para o início">
     <img
       class="h-[45px] w-[45px] rounded-full object-cover"
       src={siteLogo}
@@ -31,15 +32,16 @@ const { siteLogo, navLinks } = Astro.props;
   </button>
 
   <nav
-    class="absolute top-20 right-5 hidden rounded-xl border border-neutral/40 bg-black px-4 py-5 text-neutral sm:static sm:block sm:border-0 sm:bg-transparent sm:p-0"
     id="main-menu"
+    class="absolute right-5 top-20 hidden rounded-xl border border-neutral/40 bg-black px-4 py-5 text-neutral sm:static sm:block sm:border-0 sm:bg-transparent sm:p-0"
+    aria-label="Navegação principal"
   >
-    <ul class="gap-2 sm:flex">
+    <ul class="flex flex-col gap-2 sm:flex-row">
       {
-        navLinks.map((link, index) => (
-          <li key={index} class="relative">
+        navLinks.map((link) => (
+          <li class="relative">
             <a
-              class={`nav-item relative block p-2 text-sm font-medium transition-all duration-500 after:absolute after:bottom-0 after:left-2/4 after:h-2 after:w-1 after:-translate-x-2/4 after:text-primary after:opacity-0 after:content-['•'] hover:text-white`}
+              class="nav-item relative block p-2 text-sm font-medium transition-colors duration-300 hover:text-white"
               href={link.href}
             >
               {link.text}
@@ -52,72 +54,90 @@ const { siteLogo, navLinks } = Astro.props;
 </header>
 
 <script>
-  // Alternar menu mobile
-  const button = document.querySelector("#menu-button");
-const menu = document.querySelector("#main-menu");
-const navItems = document.querySelectorAll("#main-menu a");
+  const initializeHeader = () => {
+    const button = document.querySelector<HTMLButtonElement>("#menu-button");
+    const menu = document.querySelector<HTMLElement>("#main-menu");
 
-const toggleMenu = () => {
-  if (!menu || !button) return;
+    if (!button || !menu || button.dataset.initialized === "true") {
+      return;
+    }
 
-  menu.classList.toggle("hidden");
-  const isHidden = menu.classList.contains("hidden");
-  button.setAttribute("aria-expanded", String(!isHidden));
-};
+    button.dataset.initialized = "true";
 
-button?.addEventListener("click", toggleMenu);
+    const mobileQuery = window.matchMedia("(max-width: 639px)");
 
-navItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    if (window.innerWidth < 640 && menu && button) {
+    const closeMenu = () => {
       menu.classList.add("hidden");
       button.setAttribute("aria-expanded", "false");
-    }
-  });
-});
+      button.setAttribute("aria-label", "Abrir menu");
+    };
 
-  button?.addEventListener("click", toggleMenu);
-  navItems.forEach((item) => {
-    item?.addEventListener("click", toggleMenu);
-  });
+    const openMenu = () => {
+      menu.classList.remove("hidden");
+      button.setAttribute("aria-expanded", "true");
+      button.setAttribute("aria-label", "Fechar menu");
+    };
 
-  // Atualizar a navegação com base na rolagem da página
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("href") === `#${entry.target.id}`) {
-              item.classList.add("text-white", "md:after:opacity-100");
-            } else {
-              item.classList.remove("text-white", "md:after:opacity-100");
-            }
-          });
+    button.addEventListener("click", () => {
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+      if (isExpanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    menu.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const href = link.getAttribute("href");
+
+        if (!href) return;
+
+        if (href.startsWith("#")) {
+          const target = document.getElementById(href.slice(1));
+
+          if (target) {
+            event.preventDefault();
+
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+
+            history.replaceState(null, "", href);
+          }
+        }
+
+        if (mobileQuery.matches) {
+          closeMenu();
         }
       });
-    },
-    { threshold: 0.5 },
-  );
+    });
 
-  document.querySelectorAll("section").forEach((section) => {
-    observer.observe(section);
-  });
+    document.addEventListener("click", (event) => {
+      if (
+        mobileQuery.matches &&
+        !menu.classList.contains("hidden") &&
+        !menu.contains(event.target as Node) &&
+        !button.contains(event.target as Node)
+      ) {
+        closeMenu();
+      }
+    });
 
-  // Limpeza do observador ao mudar de aba/visibilidade
-  document.onvisibilitychange = () => {
-    if (document.visibilityState === "hidden") {
-      observer.disconnect();
-    } else {
-      document.querySelectorAll("section").forEach((section) => {
-        observer.observe(section);
-      });
-    }
+    mobileQuery.addEventListener("change", () => {
+      if (!mobileQuery.matches) {
+        menu.classList.remove("hidden");
+        button.setAttribute("aria-expanded", "false");
+        button.setAttribute("aria-label", "Abrir menu");
+      } else {
+        closeMenu();
+      }
+    });
   };
-</script>
 
-<style>
-  header {
-    animation-timeline: scroll();
-    animation-range: 0 650px;
-  }
-</style>
+  initializeHeader();
+
+  document.addEventListener("astro:page-load", initializeHeader);
+</script>
