@@ -1,6 +1,5 @@
 ---
 import Section from "./Section.astro";
-import { Image } from "astro:assets";
 import type { ProjectProps } from "@types";
 
 interface Props {
@@ -10,12 +9,13 @@ interface Props {
 const { projects } = Astro.props;
 ---
 
-<Section text="Featured Projects" href="projects">
+<Section text="Projetos" href="projetos">
   {
     projects.map(({ name, summary, image, linkPreview, linkSource }, index) => {
       const top = 98 + index * 40;
       return (
         <div
+          key={index}
           style={`top: ${top}px;`}
           class="sticky mb-12 rounded-2xl border border-neutral/20 bg-black"
         >
@@ -29,26 +29,27 @@ const { projects } = Astro.props;
                 <a
                   href={linkSource}
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="after:relative after:-bottom-1.25 after:content-[url(/external.svg)] hover:underline"
                 >
-                  Source
+                  GitHub
                 </a>
                 <a
                   href={linkPreview}
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="after:relative after:-bottom-1.25 after:content-[url(/external.svg)] hover:underline"
                 >
-                  Preview
+                  Visualizar
                 </a>
               </div>
             </div>
             <div class="flex items-end justify-end overflow-hidden">
-              <Image
-                class="h-full w-[95%] rounded-ss-xl rounded-ee-2xl object-none object-top-left sm:h-[85%] sm:w-full"
+              <img
+                class="h-full w-[95%] rounded-ss-xl rounded-ee-2xl object-cover object-top-left sm:h-[85%] sm:w-full"
                 src={image}
                 alt={name}
-                width="736"
-                height="483"
+                loading="lazy"
               />
             </div>
           </div>
