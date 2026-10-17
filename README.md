@@ -1,6 +1,6 @@
-# Portfólio Profissional - Análise Econômica & UX/UI
+# Portfólio Profissional - Economia & Negócios 
 
-Portfólio pessoal de alta performance, minimalista e responsivo, desenvolvido com **Astro**, **Tailwind CSS** e **TypeScript**, com foco em análise de dados, economia e design de interfaces.
+Portfólio pessoal de alta performance, minimalista e responsivo, desenvolvido com **Astro**, **Tailwind CSS** e **TypeScript**, com foco em análise de dados, economia, negócios e design de interfaces.
 
 ## ✨ Funcionalidades
 
