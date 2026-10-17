@@ -1,17 +1,225 @@
----
-import { SITE_CONTENT } from "@config";
-import Layout from "@layouts/Layout.astro";
-import Hero from "@components/Hero.astro";
-import About from "@components/About.astro";
-import Experience from "@components/Experience.astro";
-import Projects from "@components/Projects.astro";
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dayse Monteiro — Economia, Dados & UX Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
 
-import "../styles/global.css";
----
+  <!-- HEADER / NAVEGAÇÃO FIXA E FUNCIONAL -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <img src="/Daysemonteiro.pnj.jpeg" alt="Dayse Monteiro" class="w-9 h-9 rounded-full object-cover ring-2 ring-indigo-500/50 group-hover:ring-indigo-400 transition" />
+        <span class="font-bold text-slate-100 group-hover:text-indigo-400 transition">Dayse Monteiro</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+        <a href="#experiencias" class="hover:text-indigo-400 transition">Experiências</a>
+        <a href="#projetos" class="hover:text-indigo-400 transition">Projetos & Publicações</a>
+        <a href="#sobre" class="hover:text-indigo-400 transition">Sobre mim</a>
+      </nav>
+      <a href="mailto:daysedasilvamt@gmail.com" class="text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-full transition shadow-lg shadow-indigo-600/20">
+        Entrar em Contato
+      </a>
+    </div>
+  </header>
 
-<Layout>
-  <Hero {...SITE_CONTENT.hero} />
-  <About {...SITE_CONTENT.about} name={SITE_CONTENT.hero.name} />
-  <Experience experience={SITE_CONTENT.experience} />
-  <Projects projects={SITE_CONTENT.projects} />
-</Layout>
+  <main class="max-w-5xl mx-auto px-6 pt-32 pb-24 space-y-28">
+
+    <!-- HERO SECTION -->
+    <section class="space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-medium">
+        <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+        Economia & UX/UI Design
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white max-w-3xl leading-tight">
+        Análise socioeconômica, dados e soluções focadas na experiência do usuário.
+      </h1>
+      <p class="text-lg text-slate-400 max-w-2xl leading-relaxed">
+        Estudante de Ciências Econômicas na UFMA, especializada em pesquisa de mercado, indicadores públicos e design de interfaces intuitivas (UX/UI).
+      </p>
+      
+      <!-- HABILIDADES / TAGS -->
+      <div class="pt-2 flex flex-wrap gap-2">
+        <span class="px-3 py-1 bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium rounded-lg">Linguagem R</span>
+        <span class="px-3 py-1 bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium rounded-lg">Análise de Indicadores (SIDRA/SICONFI)</span>
+        <span class="px-3 py-1 bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium rounded-lg">Design Thinking & UX Research</span>
+        <span class="px-3 py-1 bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium rounded-lg">Prototipagem Figma</span>
+        <span class="px-3 py-1 bg-slate-900 border border-slate-800 text-slate-300 text-xs font-medium rounded-lg">Finanças Públicas</span>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 1: EXPERIÊNCIAS -->
+    <section id="experiencias" class="scroll-mt-28 space-y-10">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+          <span class="text-indigo-500">01.</span> Experiência Profissional
+        </h2>
+      </div>
+
+      <div class="space-y-8">
+        <!-- IMESC -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">IMESC — Instituto Maranhense de Estudos Socioeconômicos e Cartográficos</h3>
+              <p class="text-indigo-400 font-medium text-sm">Pesquisadora do Departamento de Estudos e Pesquisas (DEP)</p>
+            </div>
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-400 w-fit">Jul 2023 — Abr 2025</span>
+          </div>
+          <ul class="space-y-2.5 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+            <li><strong>Análise de Indicadores:</strong> Coleta, tratamento e consolidação de dados socioeconômicos e de finanças públicas nas bases SIDRA, RAIS, Data IMESC e SICONFI.</li>
+            <li><strong>Relatórios Técnicos & Impacto:</strong> Participação no desenvolvimento de estudos sobre mercado de trabalho, finanças públicas e políticas governamentais (ex: 13º Salário, CONLAGOS e Trilhas Inova).</li>
+            <li><strong>Publicações Econômicas Oficiais:</strong> Coautora no <em>Boletim de Conjuntura Econômica Maranhense (1º Trimestre/2024)</em>, analisando o mercado imobiliário e recursos do FGTS.</li>
+            <li><strong>Grandes Eventos:</strong> Avaliação do impacto econômico em eventos estaduais (Carnaval, São João, Expoema e Natal).</li>
+          </ul>
+        </div>
+
+        <!-- Inova Maranhão - UX -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">Programa Inova Maranhão (SECTI & FAPEMA)</h3>
+              <p class="text-indigo-400 font-medium text-sm">Trilheira em UX Design – Eixo Startups / Trilhas Inova</p>
+            </div>
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-400 w-fit">Set 2026 — Jan 2027</span>
+          </div>
+          <ul class="space-y-2.5 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+            <li><strong>Design Centrado no Usuário:</strong> Concepção de interfaces acessíveis e intuitivas aplicando metodologias ágeis de UX/UI.</li>
+            <li><strong>Pesquisa e Prototipação:</strong> Criação de personas, testes de usabilidade e protótipos de baixa e alta fidelidade para ecossistemas de startups.</li>
+          </ul>
+        </div>
+
+        <!-- Inova Maranhão - Ciência de Dados -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-white">Programa Inova Maranhão (SECTI & FAPEMA)</h3>
+              <p class="text-indigo-400 font-medium text-sm">Trilheira em Ciência de Dados – Eixo Startups / Trilhas Inova</p>
+            </div>
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-400 w-fit">Jan 2025 — Jul 2025</span>
+          </div>
+          <ul class="space-y-2.5 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+            <li>Capacitação intensiva abrangendo 20 cursos em Ciência de Dados, estatística, IA aplicada e resolução de problemas reais de mercado.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: PROJETOS E PUBLICAÇÕES (COM DIVISÃO CLARA) -->
+    <section id="projetos" class="scroll-mt-28 space-y-12">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+          <span class="text-indigo-500">02.</span> Projetos & Publicações
+        </h2>
+      </div>
+
+      <!-- CATEGORIA UX/UI -->
+      <div class="space-y-6">
+        <h3 class="text-lg font-semibold text-indigo-400 uppercase tracking-wider text-xs">UX / UI & Product Design</h3>
+        
+        <div class="grid md:grid-cols-1 gap-8">
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden grid md:grid-cols-2 hover:border-indigo-500/50 transition">
+            <div class="p-6 sm:p-8 flex flex-col justify-between space-y-4">
+              <div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-400">Estudo de Caso UX</span>
+                <h4 class="text-xl font-bold text-white mt-3">Temporizador em Etapas</h4>
+                <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                  Apresentação em formato de pitch detalhando a reestruturação e design de interface focado em aperfeiçoar fluxos e temporizadores segmentados.
+                </p>
+              </div>
+              <div class="flex items-center gap-4 pt-2">
+                <a href="/Temporizador em Etapas Pitch (4).pdf" target="_blank" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs rounded-lg transition">Visualizar Pitch (PDF)</a>
+                <a href="https://github.com/dayyyse-Monteiro/portfolio-daysemonteiro" target="_blank" class="text-xs text-slate-400 hover:text-white transition">Código Fonte →</a>
+              </div>
+            </div>
+            <div class="bg-slate-800 overflow-hidden">
+              <img src="/temporizadorcapa.jpg" alt="Temporizador em Etapas" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CATEGORIA PUBLICAÇÕES E IMESC -->
+      <div class="space-y-6 pt-4">
+        <h3 class="text-lg font-semibold text-indigo-400 uppercase tracking-wider text-xs">Publicações, Notas Técnicas & Pesquisas Econômicas</h3>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          
+          <!-- Card 1 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition space-y-4">
+            <div class="space-y-3">
+              <img src="/13salario.png" alt="13º Salário Maranhão" class="w-full h-44 object-cover rounded-xl border border-slate-800" />
+              <span class="text-xs font-semibold px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400">Nota Técnica</span>
+              <h4 class="text-lg font-bold text-white">Incremento do 13º na Economia Maranhense</h4>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Análise do impacto econômico do 13º salário no estado, identificando os principais setores produtivos beneficiados e injeção de liquidez.
+              </p>
+            </div>
+            <div class="pt-2">
+              <a href="/Nota-tecnica-do-13-salario.pdf" target="_blank" class="inline-block px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium rounded-lg transition">Ler Publicação (PDF) →</a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-indigo-500/50 transition space-y-4">
+            <div class="space-y-3">
+              <img src="/conlagos.png" alt="Região CONLAGOS" class="w-full h-44 object-cover rounded-xl border border-slate-800" />
+              <span class="text-xs font-semibold px-2.5 py-1 rounded bg-blue-500/10 text-blue-400">Relatório de Pesquisa (IMESC)</span>
+              <h4 class="text-lg font-bold text-white">Caracterização Socioeconômica do CONLAGOS</h4>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Estudo abrangente sobre indicadores demográficos, finanças públicas e produtividade dos 26 municípios do consórcio regional.
+              </p>
+            </div>
+            <div class="pt-2">
+              <a href="/Caracterizacao-Socioeconomica-da-Regiao-do-Conlagos.pdf" target="_blank" class="inline-block px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium rounded-lg transition">Ler Relatório Completo (PDF) →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: SOBRE MIM -->
+    <section id="sobre" class="scroll-mt-28 space-y-8">
+      <div class="border-b border-slate-800 pb-4">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+          <span class="text-indigo-500">03.</span> Sobre mim
+        </h2>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-center">
+        <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
+          <p>
+            Oi! Meu nome é <strong class="text-white">Dayse Monteiro</strong>. Sou estudante de Ciencias Econômicas na UFMA, apaixonada por microeconomia, análise de dados e por entender o funcionamento dos mercados.
+          </p>
+          <p>
+            Combinando minha experiência em pesquisas socioeconômicas no IMESC e minha formação em UX/UI pelo programa Inova Maranhão, meu objetivo é transformar dados complexos em diagnósticos claros e produtos digitais que facilitem a vida das pessoas.
+          </p>
+        </div>
+        <img src="/Daysemonteiro.pnj.jpeg" alt="Dayse Monteiro" class="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl object-cover border-2 border-indigo-500/40 shrink-0 shadow-2xl" />
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="border-t border-slate-900 py-12 text-center text-xs text-slate-500 space-y-3">
+    <p>Dayse Abreu da Silva Monteiro © 2026 — Todos os direitos reservados.</p>
+    <div class="flex justify-center gap-4">
+      <a href="https://github.com/dayyyse-Monteiro" target="_blank" class="hover:text-indigo-400 transition">GitHub</a>
+      <span>•</span>
+      <a href="mailto:daysedasilvamt@gmail.com" class="hover:text-indigo-400 transition">E-mail</a>
+    </div>
+  </footer>
+
+</body>
+</html>
