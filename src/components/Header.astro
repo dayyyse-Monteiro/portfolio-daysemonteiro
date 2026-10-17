@@ -54,14 +54,27 @@ const { siteLogo, navLinks } = Astro.props;
 <script>
   // Alternar menu mobile
   const button = document.querySelector("#menu-button");
-  const menu = document.querySelector("#main-menu");
-  const navItems = document.querySelectorAll("#main-menu > ul > li > a");
+const menu = document.querySelector("#main-menu");
+const navItems = document.querySelectorAll("#main-menu a");
 
-  const toggleMenu = () => {
-    menu?.classList.toggle("hidden");
-    const isHidden = menu?.classList.contains("hidden");
-    button?.setAttribute("aria-expanded", `${!isHidden}`);
-  };
+const toggleMenu = () => {
+  if (!menu || !button) return;
+
+  menu.classList.toggle("hidden");
+  const isHidden = menu.classList.contains("hidden");
+  button.setAttribute("aria-expanded", String(!isHidden));
+};
+
+button?.addEventListener("click", toggleMenu);
+
+navItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    if (window.innerWidth < 640 && menu && button) {
+      menu.classList.add("hidden");
+      button.setAttribute("aria-expanded", "false");
+    }
+  });
+});
 
   button?.addEventListener("click", toggleMenu);
   navItems.forEach((item) => {
